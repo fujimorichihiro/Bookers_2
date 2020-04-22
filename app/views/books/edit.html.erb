@@ -1,0 +1,30 @@
+<div class="row">
+	<div  style="color: red;">
+      <% if @book.errors.any? %>
+          <h5 class="error-message"><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h5>
+          <ul class="error-text">
+            <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
+    </div>
+
+
+
+<% if @book.user == current_user%>
+<div>
+	<h3>Editing Book</h3>
+	<%=form_for (@book) do |f|%>
+	  <label>Title</label>
+	  <p><%= f.text_field :title %></p>
+	  <label>Opinion</label>
+	  <p><%= f.text_area :body %></p>
+	  <div>
+	  	<%= f.submit "update book", class: "btn btn-info"%>
+	  </div>
+	<% end %>
+</div>
+<% end %>
+
+</div>

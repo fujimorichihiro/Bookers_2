@@ -1,0 +1,32 @@
+<div>
+  <div class="row" style="color: red;">
+      <% if @user.errors.any? %>
+          <h5 class="error-message"><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h5>
+          <ul class="error-text">
+            <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
+  </div>
+  <div class="row" >
+  <h3>User info</h3>
+  <%= form_for (@user) do |f| %>
+    <div>
+      <label>Name</label>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+        <label>Image</label>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+    </div>
+    <div>
+    <label>Introduction</label>
+    <%= f.text_area :introduction %>
+    </div>
+    <div>
+      <%= f.submit "Update User" %>
+    </div>
+  <% end %>
+  </div>
+</div>

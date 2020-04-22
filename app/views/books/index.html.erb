@@ -1,0 +1,49 @@
+	<div class="row">
+	  <div class="container" style="color: red;">
+      <% if @book.errors.any? %>
+          <h5 class="error-message"><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h5>
+          <ul class="error-text">
+            <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
+      </div>
+        <% if flash[:notice] %>
+	      <div class="flash">
+	  	    <%= flash[:notice] %>
+	      </div>
+	    <% end %>
+		<div class="col-xs-3">
+            <%= render :partial => 'layouts/profile', :locals => {:user => @user}%>
+            <%= render :partial => 'layouts/form', :locals => {:book => @book}%>
+		</div>
+	    <div class="col-xs-9">
+	    	<div >
+                <h2>Books</h2>
+	    		<table class="table table-hover">
+	    		  <thead>
+	    			<tr>
+	    				<th></th>
+	    				<th>Title</th>
+	    				<th>Opinion</th>
+	    		    </tr>
+	    		  </thead>
+	    		  <tbody>
+	    			<% @books.each do |b| %>
+	    			<tr>
+	    				<td><%= attachment_image_tag b.user, :profile_image, :fill, 40, 40, class: "img-round",fallback: "no_image.jpg" %>
+	    				</td>
+	    				<td>
+	    					<%= link_to book_path(b) do %>
+	    					  <%= b.title %>
+	    					<% end %>
+	    				</td>
+	    				<td><%= b.body %></td>
+	    			</tr>
+	    			<% end %>
+	    		  </tbody>
+	    		</table>
+	    	</div>
+	    </div>
+	</div>

@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+DMM WEBCAMP、課題3のBookers_2です。

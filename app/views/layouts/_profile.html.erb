@@ -1,0 +1,21 @@
+			<div>
+			  <h2>User info</h2>
+			  <table class="table">
+			  	<div class="user-edit-image">
+                  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, class: "img-round",fallback: "no_image.jpg" %>
+                </div>
+			    <tr>
+			      <th>name</th>
+			      <th><%= user.name %></th>
+			    </tr>
+                <tr>
+                  <th>introduction</th>
+                  <th><%= user.introduction %></th>
+                </tr>
+			  </table>
+			  <% if user == current_user %>
+                <%= link_to edit_user_path(user), class: 'btn btn-default btn-block' do %>
+                   <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                <% end %>
+			  <% end %>
+			</div>
