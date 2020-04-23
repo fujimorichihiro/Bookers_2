@@ -1,7 +1,7 @@
 <div>
   <div class="row" style="color: red;">
       <% if @user.errors.any? %>
-          <h5 class="error-message"><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h5>
+          <h2 class="error-message"><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h2>
           <ul class="error-text">
             <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>
