@@ -26,8 +26,16 @@
 	    				</td>
 	    				<td><%= @books.body %></td>
 	    				<% if @user == current_user %>
-	    				<td><%= link_to "Edit", edit_book_path(@books) %></td>
-	    				<td><%= link_to "Destroy", book_path(@books), method: :delete %></td>
+	    				<td>
+	    					<div class="btn btn-success btn-xs">
+	    					  <%= link_to "Edit", edit_book_path(@books) %>
+	    					</div>
+	    				</td>
+	    				<td>
+	    					<div class="btn btn-danger btn-xs">
+	    					  <%= link_to "Destroy", book_path(@books), method: :delete %>
+	    				    </div>
+	    				</td>
 	    				<% end %>
 	    			</tr>
 	    		  </tbody>
