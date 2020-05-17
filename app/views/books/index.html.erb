@@ -27,6 +27,8 @@
 	    				<th></th>
 	    				<th>Title</th>
 	    				<th>Opinion</th>
+	    				<th></th>
+	    				<th></th>
 	    		    </tr>
 	    		  </thead>
 	    		  <tbody>
@@ -43,7 +45,20 @@
 	    					<% end %>
 	    				</td>
 	    				<td><%= b.body %></td>
-	    				<td style="color: red;"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+	    				<!-- いいね------------------------- -->
+	    				<td>
+	    				  <% if b.favorited_by?(current_user) %>
+	    				      <%= link_to book_favorite_path(b), method: :delete do %>
+	    					    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+	    					  <% end %>
+	    				  <% else %>
+	    				      <%= link_to book_favorites_path(b), method: :post do %>
+	    					    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+	    					  <% end %>
+	    				  <% end %>
+	    				  <%= b.favorites.count %>
+	    			    </td>
+	    				<!-- ------------------------------ -->
 	    				<td>コメント数: <%= b.book_comments.count %></td>
 	    			</tr>
 	    			<% end %>

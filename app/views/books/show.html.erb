@@ -25,8 +25,21 @@
 	    					<% end %>
 	    				</td>
 	    				<td><%= @showbook.body %></td>
-	    				<td style="color: red;"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+	    				<!-- いいね---------------------------------------- -->
+	    				<td>
+	    				  <% if b.favorited_by?(current_user) %>
+	    				      <%= link_to book_favorite_path(b), method: :delete do %>
+	    					    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+	    					  <% end %>
+	    				  <% else %>
+	    				      <%= link_to book_favorites_path(b), method: :post do %>
+	    					    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+	    					  <% end %>
+	    				  <% end %>
+	    				  <%= b.favorites.count %>
+	    			    </td>
 	    				<td>コメント数: <%= @showbook.book_comments.count %></td>
+	    				<!-- edit,delete-------------------------------------------- -->
 	    				<% if @user == current_user %>
 	    				<td>
 	    					<div class="btn btn-success btn-xs">
@@ -39,6 +52,7 @@
 	    				    </div>
 	    				</td>
 	    				<% end %>
+	    				<!---------------------------------------------------------- -->
 	    			</tr>
 	    		  </tbody>
 	    		</table>
@@ -68,14 +82,14 @@
 	    					  	<% end %>
 	    					  </div>
 	    					</td>
-	    					<td style='border: 1px solid black;'>
+	    					<td>
 	    						<%= comment.comment %>
 	    					</td>
 	    					<!-- ---------------currentuser--------------------- -->
 	    					<% if comment.user == current_user %>
-	    					<td style='border: 1px solid black;'>
+	    					<td>
 	    						<div class="btn btn-danger btn-xs">
-	    						  <% link_to "Destroy", book_book_comment_path(@showbook) %>
+	    						  <%= link_to "削除", book_book_comment_path(@showbook), method: :delete %>
 	    						</div>
 	    					</td>
 	    					<!-- ------------------------------------------------ -->
@@ -91,5 +105,6 @@
                 <% end %>
                 </div>
 	    	</div>
+	    	<%= debug(params) if Rails.env.development? %>
 	    </div>
 	</div>
