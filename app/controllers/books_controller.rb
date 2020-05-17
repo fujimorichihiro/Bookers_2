@@ -20,8 +20,9 @@ class BooksController < ApplicationController
 # 
 	def show
 		@book = Book.new
-		@books = Book.find(params[:id])
-		@user = User.find(@books.user_id) #数字が入ればよい！
+		@book_comment = BookComment.new
+		@showbook = Book.find(params[:id])
+		@user = User.find(@showbook.user_id) #数字が入ればよい！
 	end
 
 	def edit

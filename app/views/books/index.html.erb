@@ -43,6 +43,8 @@
 	    					<% end %>
 	    				</td>
 	    				<td><%= b.body %></td>
+	    				<td style="color: red;"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
+	    				<td>コメント数: <%= b.book_comments.count %></td>
 	    			</tr>
 	    			<% end %>
 	    		  </tbody>

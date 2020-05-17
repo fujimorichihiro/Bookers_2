@@ -9,7 +9,9 @@ class User < ApplicationRecord
   validates :name, length: { maximum: 20 }
   validates :introduction, length: { maximum: 50 }
 
-
+# Modelの関連付け
   has_many :books, dependent: :destroy
+  has_many :book_commemts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   attachment :profile_image
 end
