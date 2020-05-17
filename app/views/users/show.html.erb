@@ -16,23 +16,22 @@
 	    			<tr>
 	    				<th></th>
 	    				<th>Title</th>
-	    				<th>opinion</th>
+	    				<th>Opinion</th>
 	    				<th></th>
 	    				<th></th>
 	    		    </tr>
 	    		  </thead>
 	    		  <tbody>
-	    			<% @books.each do |b| %>
+	    			<% @books.each do |book| %>
 	    			<tr>
 	    				<td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, class: "img-round",fallback: "no_image.jpg" %></td>
 	    				<td>
-	    					<%= link_to book_path(b) do %>
-	    					  <%= b.title %>
+	    					<%= link_to book_path(book) do %>
+	    					  <%= book.title %>
 	    					<% end %>
 	    				</td>
-	    				<td><%= b.body %></td>
-	    				<td style="color: red;"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></td>
-	    				<td>コメント数: <%= b.book_comments.count %></td>
+	    				<td><%= book.body %></td>
+	    				<td>コメント数: <%= book.book_comments.count %></td>
 	    			</tr>
 	    			<% end %>
 	    		  </tbody>

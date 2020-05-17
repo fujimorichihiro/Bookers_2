@@ -27,16 +27,16 @@
 	    				<td><%= @showbook.body %></td>
 	    				<!-- いいね---------------------------------------- -->
 	    				<td>
-	    				  <% if b.favorited_by?(current_user) %>
-	    				      <%= link_to book_favorite_path(b), method: :delete do %>
+	    				  <% if @showbook.favorited_by?(current_user) %>
+	    				      <%= link_to book_favorite_path(@showbook), method: :delete do %>
 	    					    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 	    					  <% end %>
 	    				  <% else %>
-	    				      <%= link_to book_favorites_path(b), method: :post do %>
+	    				      <%= link_to book_favorites_path(@showbook), method: :post do %>
 	    					    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
 	    					  <% end %>
 	    				  <% end %>
-	    				  <%= b.favorites.count %>
+	    				  <%= @showbook.favorites.count %>
 	    			    </td>
 	    				<td>コメント数: <%= @showbook.book_comments.count %></td>
 	    				<!-- edit,delete-------------------------------------------- -->
@@ -105,6 +105,5 @@
                 <% end %>
                 </div>
 	    	</div>
-	    	<%= debug(params) if Rails.env.development? %>
 	    </div>
 	</div>
