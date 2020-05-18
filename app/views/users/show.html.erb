@@ -6,10 +6,11 @@
 	    <% end %>
 		<div class="col-xs-3">
             <%= render :partial => 'layouts/profile', :locals => {:user => @user}%>
+            <%= render :partial => 'relationships/follow_button', :locals => {:user => @user}%>
             <%= render :partial => 'layouts/form', :locals => {:book => @book}%>
 		</div>
 	    <div class="col-xs-9">
-	    	<div >
+	    	<div>
                 <h2>Books</h2>
 	    		<table class="table table-hover">
 	    		  <thead>
