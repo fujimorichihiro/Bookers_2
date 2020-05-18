@@ -52,7 +52,7 @@
 	    				<td>
 	    					 <% if book.favorited_by?(current_user) %>
 	    					 <!-- errorメッセージからuser_idがわたっていない？と考えた。第二因数としてcurrent_user_idを渡して解決。メンターに聞く。 -->
-	    				      <%= link_to book_favorite_path(book, id:current_user.id), method: :delete do %>
+	    				      <%= link_to book_favorites_path(book), method: :delete do %>
 	    					    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 	    					  <% end %>
 	    				  <% else %>
