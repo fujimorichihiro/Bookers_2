@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 # Home Controller
   root  'homes#top'
   get 'home/about' => 'homes#show'
+  get 'search' => 'search#search'
 # books,users,post_comments,favorites
   resources :users, only: [:index, :show, :edit, :update] do
   	member do

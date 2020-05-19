@@ -36,4 +36,18 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def User.search(search, table, option)
+    if option == "1"
+    User.where(name: "#{search}")
+  elsif option == "2"
+    User.where('name LIKE ?',"%#{search}%")
+  elsif option == "3"
+    User.where('name LIKE ?',"#{search}%")
+  elsif option == "4"
+    User.where('name LIKE ?',"%#{search}")
+  else
+    User.all
+  end
+end
+
 end
