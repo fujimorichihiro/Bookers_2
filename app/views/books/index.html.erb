@@ -36,7 +36,9 @@
 	    		  </thead>
 	    		  <tbody>
 	    			<% @books.each do |book| %>
-	    			    <%= render :partial => 'books/favorite', :locals => {:book => book}>
+	    				<tr id="favorite-<%= book.id %>">
+	    			       <%= render :partial => 'books/favorite', :locals => {:book => book} %>
+	    			   </tr>
 	    			<% end %>
 	    		  </tbody>
 	    		</table>

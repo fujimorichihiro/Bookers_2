@@ -13,45 +13,10 @@
                 <h2>Book detail</h2>
 	    		<table class="table">
 	    		  <tbody>
-	    			<tr>
-	    				<td><%= attachment_image_tag @showbook.user, :profile_image, :fill, 40, 40, class: "img-round",fallback: "no_image.jpg" %>
-	    					<%= link_to user_path(@showbook.user) do %>
-	    					  <p><%= @showbook.user.name %></p>
-	    					<% end %>
-	    				</td>
-	    				<td>
-	    					<%= link_to book_path(@showbook) do %>
-	    					  <%= @showbook.title %>
-	    					<% end %>
-	    				</td>
-	    				<td><%= @showbook.body %></td>
-	    				<!-- いいね---------------------------------------- -->
-	    				<td>
-	    				  <% if @showbook.favorited_by?(current_user) %>
-	    				      <%= link_to book_favorite_path(@showbook), method: :delete do %>
-	    					    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-	    					  <% end %>
-	    				  <% else %>
-	    				      <%= link_to book_favorites_path(@showbook), method: :post do %>
-	    					    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-	    					  <% end %>
-	    				  <% end %>
-	    				  <%= @showbook.favorites.count %>
-	    			    </td>
-	    				<td>コメント数: <%= @showbook.book_comments.count %></td>
+	    			<tr id="favorite-<%= @showbook.id %>">
+	    				    <%= render :partial => 'books/favorite', :locals => {:book => @showbook} %>
 	    				<!-- edit,delete-------------------------------------------- -->
-	    				<% if @user == current_user %>
-	    				<td>
-	    					<div class="btn btn-success btn-xs">
-	    					  <%= link_to "Edit", edit_book_path(@showbook) %>
-	    					</div>
-	    				</td>
-	    				<td>
-	    					<div class="btn btn-danger btn-xs">
-	    					  <%= link_to "Destroy", book_path(@showbook), method: :delete %>
-	    				    </div>
-	    				</td>
-	    				<% end %>
+	    				
 	    				<!---------------------------------------------------------- -->
 	    			</tr>
 	    		  </tbody>
