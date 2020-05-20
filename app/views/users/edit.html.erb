@@ -11,6 +11,7 @@
   </div>
   <div class="row" >
   <h3>User info</h3>
+  <div class="col-xs-11">
   <%= form_for (@user) do |f| %>
     <div>
       <label>Name</label>
@@ -28,5 +29,9 @@
       <%= f.submit "Update User" %>
     </div>
   <% end %>
+  </div>
+  <div class="col-xs-1">
+    <%= link_to "登録情報", edit_user_registration_path(current_user) %>
+  </div>
   </div>
 </div>

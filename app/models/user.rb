@@ -4,12 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-# ヴァリデーションチェック
+# ヴァリデーションチェック----------------------------------------------------
   validates :name, length: { minimum: 2 }
   validates :name, length: { maximum: 20 }
   validates :introduction, length: { maximum: 50 }
 
-# Modelの関連付け
+# Modelの関連付け-------------------------------------------------------
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -23,7 +23,8 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-
+#メソッド------------------------------------------------------------------
+  #follow関連のメソッド-----------------------------------
   def follow(other_user)
     following << other_user
   end
@@ -36,18 +37,31 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  # searchメソッド------------------------------------------
   def User.search(search, table, option)
     if option == "1"
-    User.where(name: "#{search}")
-  elsif option == "2"
-    User.where('name LIKE ?',"%#{search}%")
-  elsif option == "3"
-    User.where('name LIKE ?',"#{search}%")
-  elsif option == "4"
-    User.where('name LIKE ?',"%#{search}")
-  else
-    User.all
+      User.where(name: "#{search}")
+    elsif option == "2"
+      User.where('name LIKE ?',"%#{search}%")
+    elsif option == "3"
+      User.where('name LIKE ?',"#{search}%")
+    elsif option == "4"
+      User.where('name LIKE ?',"%#{search}")
+    else
+      User.all
+    end
   end
-end
+  # JP prefecture用メソッド-----------------------------------
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
 
 end
