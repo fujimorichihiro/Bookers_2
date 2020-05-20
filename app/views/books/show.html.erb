@@ -20,20 +20,12 @@
 	    		</table>
 	    	</div>
             <!-- --------------------------------コメント一覧--------------------------------------- -->
+            <div class="line-box"></div>
 	    	<div>
 	    		<h3>Comment</h3>
-	    		<table class="table">
-	    			<thead>
-	    				<tr>
-	    					<th></th>
-	    					<th></th>
-	    					<th></th>
-	    				</tr>
-	    			</thead>
-	    			<tbody id="comment-area">
-	    			    <%= render :partial => 'books/book_comment', :locals => {:showbook => @showbook} %>
-	    			</tbody>
-	    		</table>
+	    		<div id="comment-area">
+	    			<%= render :partial => 'books/book_comment', :locals => {:showbook => @showbook} %>
+	    		</div>
 	    		<!-- -------------------コメントフォーム ----------------------------->
 	    		<u>コメントする</u>
 	    		<div class="form-group">
