@@ -85,6 +85,7 @@ gem 'ed25519'
 gem 'bcrypt_pbkdf'
 
 gem 'jp_prefecture'
+gem 'dotenv-rails'
 
 
 
