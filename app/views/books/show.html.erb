@@ -30,18 +30,15 @@
 	    					<th></th>
 	    				</tr>
 	    			</thead>
-	    			<tbody>
-	    				<% @showbook.book_comments.each do |comment| %>
-	    				  <tr id="comment-<%= comment.id %>">
-	    					<%= render :partial => 'books/book_comment', :locals => {:comment => comment} %>
-	    				  </tr>
-	    				<% end %>
+	    			<tbody id="comment-area">
+	    			    <%= render :partial => 'books/book_comment', :locals => {:showbook => @showbook} %>
 	    			</tbody>
 	    		</table>
 	    		<!-- -------------------コメントフォーム ----------------------------->
+	    		<u>コメントする</u>
 	    		<div class="form-group">
-	    		<%= form_for [@showbook, @book_comment] do |f| %>
-                  <%= f.text_area :comment, :style => 'width: 70%;'%>
+	    		<%= form_with(model: [@showbook, @book_comment] ) do |f| %>
+                  <%= f.text_area :comment, :style => 'width: 70%;', class: "input-lg"%>
                    <%= f.submit "送信"%>
                 <% end %>
                 </div>

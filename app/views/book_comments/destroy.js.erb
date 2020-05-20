@@ -1,0 +1,2 @@
+$("#comment-area").html('<%= j(render :partial => 'books/book_comment', :locals => {:showbook => @book_comment.book})%>')
+$("#favorite-<%= @book_comment.book.id %>").html('<%= j(render :partial => 'books/favorite', :locals => {:book => @book_comment.book})%>')
