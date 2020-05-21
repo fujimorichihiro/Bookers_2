@@ -27,10 +27,6 @@
                       <%= user.followers.count %></th>
                     <% end %>
                 </tr>
-                <tr>
-                  <th>latitude</th>
-                  <th><%= @user.latitude %></th>
-                </tr>
 			  </table>
 			  <% if user == current_user %>
                 <%= link_to edit_user_path(user), class: 'btn btn-default btn-block' do %>
