@@ -62,6 +62,19 @@ class User < ApplicationRecord
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
+  #geocoder用-------------------------------------------------
+  #config/initialize/geocoder.rbで設定。
+  #住所が詳しすぎるとgeocoderがうまくいかない。
 
+  def current_position
+    #現在地を返す？
+  end
+  #住所のカラムを連結する
+  def user_address
+    [self.prefecture_name, self.address_city, self.address_street, self.address_building].compact.join
+  end
+
+  geocoded_by :user_address#, latitude: :lat, longitude: :lon
+  after_validation :geocode
 
 end

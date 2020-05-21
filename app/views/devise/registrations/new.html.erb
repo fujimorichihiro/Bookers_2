@@ -18,9 +18,10 @@
     <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
   </div>
 <!-- -----------prefecture_code----------- -->
+  <!--  -->
   <div class="field">
     <%= f.label :prefecutre_code %><br />
-    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %>
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name ,include_blank: '都道府県' %>
   </div>
 <!-- -------------------------------------- -->
 

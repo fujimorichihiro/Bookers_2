@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+
+#住所自動入力用
 $ ->
   $("#user_postcode").jpostal({
     postcode : [ "#user_postcode" ],
