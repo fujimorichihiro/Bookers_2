@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 # devise
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations'
+  }
 # Home Controller
   root  'homes#top'
   get 'home/about' => 'homes#show'
