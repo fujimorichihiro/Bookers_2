@@ -5,4 +5,7 @@ class HomesController < ApplicationController
 
   def show
   end
+
+  def chatroom
+  end
 end

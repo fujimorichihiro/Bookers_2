@@ -25,6 +25,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 #メソッド------------------------------------------------------------------
   #thanks mailer--------------------------------------(https://remonote.jp/rails-devise-welcome-mail)
+  #registrations.controllerに直接記述した。
   # after_create :send_thanks_mail
 
   # def send_thanks_mail
