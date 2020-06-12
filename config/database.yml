@@ -5,8 +5,12 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: EUC_JP
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: hogehoge
+  password: hogehoge
+  host: localhost
   timeout: 5000
 
 development:
@@ -22,7 +26,6 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+# データベースの名前。アプリケーションの名前_環境にする
+  database: applicationname_production
 
